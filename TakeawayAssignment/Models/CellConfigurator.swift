@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol CellConfigurator {
     func configure(cell: RestaurantCell)
@@ -18,14 +19,29 @@ struct RestaurantCellConfigurator {
     
     func configure(cell: RestaurantCell) {
         cell.nameLabel.text = restaurant.name
-        cell.statusLabel.text = restaurant.status.toString()
-        configureSortValue(cell: cell)
+        configureStatusLabel(cell: cell)
+        configureSortLabel(cell: cell)
         cell.layoutSubviews()
     }
 }
 
 private extension RestaurantCellConfigurator {
-    private func configureSortValue(cell: RestaurantCell) {
+    
+    private func configureStatusLabel(cell: RestaurantCell) {
+        cell.statusLabel.text = restaurant.status.toString()
+        switch restaurant.status {
+        case .open:
+            cell.statusLabel.textColor = UIColor.green
+        case .orderAhead:
+            cell.statusLabel.textColor = UIColor.brown
+        case .closed:
+            cell.statusLabel.textColor = UIColor.red
+        case .unknown:
+            cell.statusLabel.textColor = UIColor.black
+        }
+    }
+    
+    private func configureSortLabel(cell: RestaurantCell) {
         
         cell.sortValueLabel.isHidden = true
         

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum RestaurantStatus {
+public enum RestaurantStatus: Int {
     case open
     case orderAhead
     case closed
@@ -30,6 +30,12 @@ public enum RestaurantStatus {
         case .closed    : return "Closed"
         case .unknown   : return "Unknown"
         }
+    }
+}
+
+extension RestaurantStatus: Equatable {
+    static func <(lhs: RestaurantStatus, rhs: RestaurantStatus) -> Bool {
+        return lhs.rawValue < rhs.rawValue
     }
 }
 

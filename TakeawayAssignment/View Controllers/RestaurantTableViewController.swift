@@ -71,12 +71,12 @@ private extension RestaurantTableViewController {
         let notFavoriteRestaurants = apiClient.filter(favorite: false, restaurants: restaurants)
         
         if favoriteRestaurants.count > 0 {
-            let sortedRestaurants = RestaurantSorter(sortType: currentSortType).sort(elements: favoriteRestaurants) as! [Restaurant]
+            let sortedRestaurants = RestaurantSorter(sortType: currentSortType).sort(elements: favoriteRestaurants)
             sections.append(Section<Restaurant>(title: "Favorites ❤️", cellData: sortedRestaurants))
         }
         
         if notFavoriteRestaurants.count > 0 {
-            let sortedRestaurants = RestaurantSorter(sortType: currentSortType).sort(elements: notFavoriteRestaurants) as! [Restaurant]
+            let sortedRestaurants = RestaurantSorter(sortType: currentSortType).sort(elements: notFavoriteRestaurants)
             sections.append(Section<Restaurant>(title: "Restaurants 🍏", cellData: sortedRestaurants))
         }
         

@@ -9,28 +9,26 @@
 import Foundation
 
 protocol Sortable {
+    var status: RestaurantStatus { get }
     var sortValues: SortValues? { get }
 }
 
-protocol Sorting {
-    var sortType: SortType { get set }
-    func sort(elements: [Sortable]) -> [Sortable]
-}
-
-extension Sorting {
-    public func sort(elements: [Sortable]) -> [Sortable] {
-        return elements.sorted { (element1, element2) -> Bool in
-            guard let sortValues1 = element1.sortValues else {
+struct RestaurantSorter {
+    var sortType: SortType
+    
+    public func sort(elements: [Restaurant]) -> [Restaurant] {
+        return elements.sorted { (restaurant1, restaurant2) -> Bool in
+            guard restaurant1.status == restaurant2.status else  {
+                return restaurant1.status < restaurant2.status
+            }
+            guard let sortValues1 = restaurant1.sortValues else {
                 return true
             }
-            guard let sortValues2 = element2.sortValues else {
+            guard let sortValues2 = restaurant2.sortValues else {
                 return false
             }
             return sortValues1.valueFor(sortType: sortType) < sortValues2.valueFor(sortType: sortType)
         }
     }
-}
 
-struct RestaurantSorter: Sorting {
-    var sortType: SortType
 }
