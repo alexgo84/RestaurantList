@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RestaurantCell" rowHeight="137" id="xEa-f4-Fwd" userLabel="RestaurantCell" customClass="RestaurantCell" customModule="TakeawayAssignment" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="372" height="137"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xEa-f4-Fwd" id="wJH-fo-oUm">
+                <rect key="frame" x="0.0" y="0.0" width="372" height="136.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lV9-mV-EaB">
+                        <rect key="frame" x="0.0" y="8" width="0.0" height="120.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ON-G6-Atw" userLabel="Name Label">
+                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="72.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoF-qC-Weu" userLabel="Status Label">
+                                <rect key="frame" x="0.0" y="76" width="61.5" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6JJ-mf-zOM" userLabel="Sort Value Label">
+                                <rect key="frame" x="0.0" y="100" width="79" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="lV9-mV-EaB" secondAttribute="trailing" constant="8" id="M46-et-hav"/>
+                    <constraint firstAttribute="bottom" secondItem="lV9-mV-EaB" secondAttribute="bottom" constant="8" id="SNU-ma-kEz"/>
+                    <constraint firstItem="lV9-mV-EaB" firstAttribute="leading" secondItem="wJH-fo-oUm" secondAttribute="leading" constant="8" id="aJ6-bN-paJ"/>
+                    <constraint firstItem="lV9-mV-EaB" firstAttribute="top" secondItem="wJH-fo-oUm" secondAttribute="top" constant="8" id="od8-fG-YHy"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLabel" destination="1ON-G6-Atw" id="cCd-TZ-Zfy"/>
+                <outlet property="sortValueLabel" destination="6JJ-mf-zOM" id="yud-Gf-nsj"/>
+                <outlet property="statusLabel" destination="QoF-qC-Weu" id="58X-88-n6s"/>
+            </connections>
+            <point key="canvasLocation" x="32" y="106.5"/>
+        </tableViewCell>
+    </objects>
+</document>
