@@ -9,23 +9,22 @@
 import UIKit
 
 class RestaurantTableViewController: UITableViewController {
-    let apiClient = APIClient()
+
+    
+    var apiClient = APIClient()
     let dataSource = DataSource<Restaurant>()
-    var currentSortType: SortType = .bestMatch {
-        didSet {
-            dataSource.currentSortType = currentSortType
-        }
-    }
+    var restaurants = [Restaurant]()
+
     
     // MARK: - UITableViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.tableView.register(UINib(nibName: "RestaurantCell", bundle: nil),
                                 forCellReuseIdentifier: Restaurant.cellIdentifier())
         self.tableView.dataSource = dataSource
         tableView.delegate = self
-        fetchRestaurantsAsync()
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -38,59 +37,49 @@ class RestaurantTableViewController: UITableViewController {
             return [addToFavoritesAction(restaurant: restaurant)]
         }
     }
-}
 
-private extension RestaurantTableViewController {
-    
-    func fetchRestaurantsAsync() {
-        apiClient.getAllRestaurants {(restaurants, error) in
-            
-            // If an error occured -- allow the user to try again.
-            
-            if let error = error {
-                ErrorMessage.custom(error: error).show(on: self,
-                                                       customActionTitle: "Try Again",
-                                                       customAction: {
-                    self.fetchRestaurantsAsync()
-                })
-            }
-            
-            if let restaurants = restaurants {
-                self.assignSections(restaurants: restaurants)
-            } else {
-                ErrorMessage.unknownError().show(on: self)
-                assert(false)
-            }
-        }
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.textLabel?.textColor = UIColor.white
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        header.textLabel?.frame = header.frame
+        header.textLabel?.textAlignment = .center
+        header.tintColor = UIColor(red: 20.0 / 255, green: 116.0 / 255, blue: 155.0 / 255, alpha: 1)
     }
     
-    func assignSections(restaurants: [Restaurant]) {
-        
-        var sections: [Section<Restaurant>] = []
-        let favoriteRestaurants = apiClient.filter(favorite: true, restaurants: restaurants)
-        let notFavoriteRestaurants = apiClient.filter(favorite: false, restaurants: restaurants)
-        
-        if favoriteRestaurants.count > 0 {
-            let sortedRestaurants = RestaurantSorter(sortType: currentSortType).sort(elements: favoriteRestaurants)
-            sections.append(Section<Restaurant>(title: "Favorites ❤️", cellData: sortedRestaurants))
+    // MARK: public methods
+    
+    private var currentSearchTerm: String = ""
+    var currentSortType: SortType = .bestMatch
+
+    public func updateContent(sortType: SortType? = nil, searchTerm: String? = nil) {
+        if let sortType = sortType {
+            currentSortType = sortType
+        }
+        if let searchTerm = searchTerm {
+            currentSearchTerm = searchTerm
         }
         
-        if notFavoriteRestaurants.count > 0 {
-            let sortedRestaurants = RestaurantSorter(sortType: currentSortType).sort(elements: notFavoriteRestaurants)
-            sections.append(Section<Restaurant>(title: "Restaurants 🍏", cellData: sortedRestaurants))
-        }
+        let factory = RestaurantSectionFactory(apiClient: apiClient)
+        let sections = factory.sections(restaurants: restaurants,
+                                        sortType: currentSortType,
+                                        searchTerm: currentSearchTerm)
         
+            
         dataSource.sections = sections
+        dataSource.currentSortType = currentSortType
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
-    
+}
+
+private extension RestaurantTableViewController {
     func addToFavoritesAction(restaurant: Restaurant) -> UITableViewRowAction {
         let favorite = UITableViewRowAction(style: .normal, title: "Add to favorites") { (action, indexPath) in
             self.apiClient.addToFavorites(name: restaurant.name)
-            self.fetchRestaurantsAsync()
+            self.updateContent()
         }
         
         favorite.backgroundColor = UIColor.green
@@ -100,7 +89,7 @@ private extension RestaurantTableViewController {
     func removeFromFavoritesAction(restaurant: Restaurant) -> UITableViewRowAction {
         let favorite = UITableViewRowAction(style: .normal, title: "Remove from favorites") { (action, indexPath) in
             self.apiClient.removeFromFavorites(name: restaurant.name)
-            self.fetchRestaurantsAsync()
+            self.updateContent()
         }
         
         favorite.backgroundColor = UIColor.red

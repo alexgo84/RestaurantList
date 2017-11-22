@@ -8,8 +8,8 @@
 
 import Foundation
 
-public enum SortType {
-    case bestMatch
+public enum SortType: Int {
+    case bestMatch = 0
     case newest
     case ratingAverage
     case distance
@@ -17,6 +17,30 @@ public enum SortType {
     case averageProductPrice
     case deliveryCosts
     case minCost
+    
+    public static func allValues() -> [SortType] {
+        return [self.bestMatch,
+                self.newest,
+                self.ratingAverage,
+                self.distance,
+                self.popularity,
+                self.averageProductPrice,
+                self.deliveryCosts,
+                self.minCost]
+    }
+    
+    public func toString() -> String {
+        switch self {
+            case .bestMatch         : return "Best Match"
+            case .newest            : return "Newest"
+            case .ratingAverage     : return "Rating Average"
+            case .distance          : return "Distance"
+            case .popularity        : return "Popularity"
+            case .averageProductPrice: return "Avg Product Price"
+            case .deliveryCosts     : return "Delivery Costs"
+            case .minCost           : return "Min Cost"
+        }
+    }
 }
 
 public struct SortValues {

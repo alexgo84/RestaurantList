@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		751ADD211FC5CFC9002CEC13 /* RestaurantSectionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ADD201FC5CFC9002CEC13 /* RestaurantSectionsFactory.swift */; };
+		751ADD231FC5EC4D002CEC13 /* SortTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ADD221FC5EC4D002CEC13 /* SortTypeButton.swift */; };
 		75324FF01FC4915B00EB7094 /* RestaurantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75324FEF1FC4915B00EB7094 /* RestaurantListViewController.swift */; };
 		7547436B1FC1F89600326EF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7547436A1FC1F89600326EF3 /* AppDelegate.swift */; };
 		7547436D1FC1F89600326EF3 /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7547436C1FC1F89600326EF3 /* RestaurantTableViewController.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		751ADD201FC5CFC9002CEC13 /* RestaurantSectionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSectionsFactory.swift; sourceTree = "<group>"; };
+		751ADD221FC5EC4D002CEC13 /* SortTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortTypeButton.swift; sourceTree = "<group>"; };
 		75324FEF1FC4915B00EB7094 /* RestaurantListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewController.swift; sourceTree = "<group>"; };
 		754743671FC1F89600326EF3 /* TakeawayAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeawayAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7547436A1FC1F89600326EF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 			children = (
 				7547438B1FC1FA0E00326EF3 /* Restaurant.swift */,
 				754743A71FC3A13F00326EF3 /* SortValues.swift */,
+				751ADD201FC5CFC9002CEC13 /* RestaurantSectionsFactory.swift */,
 				754743A51FC39A3D00326EF3 /* RestaurantSorter.swift */,
 				7547438D1FC1FA3A00326EF3 /* Resource.swift */,
 				7547438F1FC1FB5200326EF3 /* DataSource.swift */,
@@ -149,6 +154,7 @@
 			children = (
 				754743961FC2032C00326EF3 /* RestaurantCell.xib */,
 				754743981FC203AC00326EF3 /* RestaurantCell.swift */,
+				751ADD221FC5EC4D002CEC13 /* SortTypeButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -284,9 +290,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				754743941FC2020300326EF3 /* CellConfigurator.swift in Sources */,
+				751ADD211FC5CFC9002CEC13 /* RestaurantSectionsFactory.swift in Sources */,
 				754743A61FC39A3D00326EF3 /* RestaurantSorter.swift in Sources */,
 				7547436D1FC1F89600326EF3 /* RestaurantTableViewController.swift in Sources */,
 				75324FF01FC4915B00EB7094 /* RestaurantListViewController.swift in Sources */,
+				751ADD231FC5EC4D002CEC13 /* SortTypeButton.swift in Sources */,
 				7547438E1FC1FA3A00326EF3 /* Resource.swift in Sources */,
 				754743A81FC3A13F00326EF3 /* SortValues.swift in Sources */,
 				7547436B1FC1F89600326EF3 /* AppDelegate.swift in Sources */,

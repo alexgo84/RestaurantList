@@ -23,7 +23,7 @@ public enum RestaurantStatus: Int {
         }
     }
     
-    public func toString() -> String{
+    public func toString() -> String {
         switch self {
         case .open      : return "Open"
         case .orderAhead: return "Order ahead"
