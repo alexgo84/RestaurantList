@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75324FF01FC4915B00EB7094 /* RestaurantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75324FEF1FC4915B00EB7094 /* RestaurantListViewController.swift */; };
 		7547436B1FC1F89600326EF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7547436A1FC1F89600326EF3 /* AppDelegate.swift */; };
 		7547436D1FC1F89600326EF3 /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7547436C1FC1F89600326EF3 /* RestaurantTableViewController.swift */; };
 		754743701FC1F89600326EF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7547436E1FC1F89600326EF3 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		75324FEF1FC4915B00EB7094 /* RestaurantListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewController.swift; sourceTree = "<group>"; };
 		754743671FC1F89600326EF3 /* TakeawayAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeawayAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7547436A1FC1F89600326EF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7547436C1FC1F89600326EF3 /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				7547436C1FC1F89600326EF3 /* RestaurantTableViewController.swift */,
+				75324FEF1FC4915B00EB7094 /* RestaurantListViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				754743941FC2020300326EF3 /* CellConfigurator.swift in Sources */,
 				754743A61FC39A3D00326EF3 /* RestaurantSorter.swift in Sources */,
 				7547436D1FC1F89600326EF3 /* RestaurantTableViewController.swift in Sources */,
+				75324FF01FC4915B00EB7094 /* RestaurantListViewController.swift in Sources */,
 				7547438E1FC1FA3A00326EF3 /* Resource.swift in Sources */,
 				754743A81FC3A13F00326EF3 /* SortValues.swift in Sources */,
 				7547436B1FC1F89600326EF3 /* AppDelegate.swift in Sources */,

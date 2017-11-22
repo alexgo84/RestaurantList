@@ -1,41 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oq9-Uu-XQz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bvG-bk-2WE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Restaurant Table View Controller-->
-        <scene sceneID="d0e-tI-s3g">
+        <!--Restaurant List View Controller-->
+        <scene sceneID="ygj-Rv-NgV">
             <objects>
-                <tableViewController id="oq9-Uu-XQz" userLabel="Restaurant Table View Controller" customClass="RestaurantTableViewController" customModule="TakeawayAssignment" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tci-32-vvM">
+                <viewController id="bvG-bk-2WE" customClass="RestaurantListViewController" customModule="TakeawayAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Khd-Xd-sRc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="filter results" translatesAutoresizingMaskIntoConstraints="NO" id="BMz-GO-iNh">
+                                <rect key="frame" x="56" y="20" width="319" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="16G-zv-ymh">
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <connections>
+                                    <segue destination="G3u-is-5fT" kind="embed" identifier="RestaurantTableSegueIdentifier" id="DOd-n0-w6y"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fba-y1-fFH" userLabel="Filter Options Button">
+                                <rect key="frame" x="0.0" y="20" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fba-y1-fFH" secondAttribute="height" multiplier="1:1" id="Jjs-Cl-l8c"/>
+                                </constraints>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BMz-GO-iNh" firstAttribute="top" secondItem="TfI-Vt-uJ9" secondAttribute="top" id="LE9-9n-ZNp"/>
+                            <constraint firstItem="fba-y1-fFH" firstAttribute="leading" secondItem="TfI-Vt-uJ9" secondAttribute="leading" id="MxV-SE-s5u"/>
+                            <constraint firstItem="BMz-GO-iNh" firstAttribute="leading" secondItem="fba-y1-fFH" secondAttribute="trailing" id="N6H-RU-oxX"/>
+                            <constraint firstItem="16G-zv-ymh" firstAttribute="top" secondItem="fba-y1-fFH" secondAttribute="bottom" id="gH5-b7-1AK"/>
+                            <constraint firstItem="16G-zv-ymh" firstAttribute="leading" secondItem="TfI-Vt-uJ9" secondAttribute="leading" id="gOv-bt-yWl"/>
+                            <constraint firstItem="BMz-GO-iNh" firstAttribute="trailing" secondItem="TfI-Vt-uJ9" secondAttribute="trailing" id="lqv-ld-qhu"/>
+                            <constraint firstItem="16G-zv-ymh" firstAttribute="bottom" secondItem="TfI-Vt-uJ9" secondAttribute="bottom" id="lvK-rw-1TX"/>
+                            <constraint firstItem="16G-zv-ymh" firstAttribute="trailing" secondItem="TfI-Vt-uJ9" secondAttribute="trailing" id="oT3-h7-Puh"/>
+                            <constraint firstItem="16G-zv-ymh" firstAttribute="top" secondItem="BMz-GO-iNh" secondAttribute="bottom" id="qiP-Xa-65x"/>
+                            <constraint firstItem="fba-y1-fFH" firstAttribute="top" secondItem="TfI-Vt-uJ9" secondAttribute="top" id="vaH-og-wc4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TfI-Vt-uJ9"/>
+                    </view>
+                    <connections>
+                        <outlet property="filterButton" destination="fba-y1-fFH" id="9zq-e8-27y"/>
+                        <outlet property="serachBar" destination="BMz-GO-iNh" id="yBR-ME-Cx8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y76-sA-1RN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="212" y="-9.4452773613193415"/>
+        </scene>
+        <!--Restaurant Table View Controller-->
+        <scene sceneID="1qE-GV-K4v">
+            <objects>
+                <viewController id="G3u-is-5fT" customClass="RestaurantTableViewController" customModule="TakeawayAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tC9-3a-XTb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RestaurantCell" id="fFR-f9-NBk" customClass="RestaurantCell" customModule="TakeawayAssignment" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Restaurant Cell" id="6ft-yz-Xke" customClass="RestaurantCell" customModule="TakeawayAssignment" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fFR-f9-NBk" id="iRa-Ty-EE7">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6ft-yz-Xke" id="cUP-7r-Yx0">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="oq9-Uu-XQz" id="Zs5-m6-YYm"/>
-                            <outlet property="delegate" destination="oq9-Uu-XQz" id="cO6-xo-Yuo"/>
-                        </connections>
                     </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Cee-Iq-dxb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iL6-rA-fQ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="924" y="128"/>
+            <point key="canvasLocation" x="964" y="-9"/>
         </scene>
     </scenes>
 </document>
