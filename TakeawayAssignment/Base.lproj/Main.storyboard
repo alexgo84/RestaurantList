@@ -13,7 +13,7 @@
         <!--Restaurant List View Controller-->
         <scene sceneID="2L1-KB-3t1">
             <objects>
-                <viewController id="apX-fz-lAc" customClass="RestaurantListViewController" customModule="TakeawayAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RestaurantListViewController" id="apX-fz-lAc" customClass="RestaurantListViewController" customModule="TakeawayAssignment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7G6-Ef-Y7H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -66,7 +66,7 @@
         <!--Restaurant Table View Controller-->
         <scene sceneID="d0e-tI-s3g">
             <objects>
-                <tableViewController id="oq9-Uu-XQz" userLabel="Restaurant Table View Controller" customClass="RestaurantTableViewController" customModule="TakeawayAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="RestaurantTableViewController" id="oq9-Uu-XQz" userLabel="Restaurant Table View Controller" customClass="RestaurantTableViewController" customModule="TakeawayAssignment" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tci-32-vvM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="535"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

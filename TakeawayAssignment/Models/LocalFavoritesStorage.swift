@@ -12,9 +12,11 @@ struct LocalFavoritesStorage {
     
     private let kFavorites = "kFavoriteRestaurantsNames"
     private var favoriteRestaurantNames: [String]
+    private let userDefaults: UserDefaults
     
-    init() {
-        guard let namesFromLocalStorage = UserDefaults.standard.object(forKey: kFavorites) as? [String] else {
+    init(userDefaults: UserDefaults = UserDefaults.standard) {
+        self.userDefaults = userDefaults
+        guard let namesFromLocalStorage = userDefaults.object(forKey: kFavorites) as? [String] else {
             favoriteRestaurantNames = []
             return
         }
@@ -28,7 +30,7 @@ struct LocalFavoritesStorage {
         }
         
         favoriteRestaurantNames.append(name)
-        UserDefaults.standard.setValue(favoriteRestaurantNames, forKey: kFavorites)
+        userDefaults.setValue(favoriteRestaurantNames, forKey: kFavorites)
     }
     
     public mutating func removeFromFavorites(name: String) {
@@ -41,7 +43,7 @@ struct LocalFavoritesStorage {
             favoriteRestaurantNames.remove(at: index)
         }
 
-        UserDefaults.standard.setValue(favoriteRestaurantNames, forKey: kFavorites)
+        userDefaults.setValue(favoriteRestaurantNames, forKey: kFavorites)
     }
     
     public func isFavorite(name: String) -> Bool {

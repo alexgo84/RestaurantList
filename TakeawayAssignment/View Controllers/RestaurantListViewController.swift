@@ -11,7 +11,7 @@ import UIKit
 
 class RestaurantListViewController: UIViewController {
     
-    let apiClient = APIClient()
+    var apiClient = APIClient()
     var currentSearchTerm = ""
     var currentSortType: SortType = .bestMatch
     

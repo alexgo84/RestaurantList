@@ -8,15 +8,17 @@
 
 import Foundation
 
-final class APIClient: NSObject {
+class APIClient {
     
     /*
      When there is a need to fetch results from remote - create a web service owned by APIClient.
      Then create a resource with a remote URL instead of calling 'Restaurant.allLocalRestaurants'.
      */
-    let webService: WebService = WebService()
+    private let webService: WebService = WebService()
+    private let localService: LocalService = LocalService()
     private var localFavoritesStorage = LocalFavoritesStorage()
     
+    @available(*, unavailable, message:"This wasn't implemented yet. To use this -- define a valid URL unside 'JSONURL.restaurants.urlToRemote'")
     func getAllRestaurantsFromRemote(completion: @escaping ([Restaurant]?, Error?) -> ()) {
         webService.load(resource: Restaurant.allFromRemote) { restaurants, error in
             completion(restaurants, error)
@@ -25,13 +27,8 @@ final class APIClient: NSObject {
     
     /// Try to load all restaurants from local JSON
     func getAllRestaurants(completion: @escaping ([Restaurant]?, Error?) -> ()) {
-        let restaurantsResource = Restaurant.allFromStub
-        do {
-            let restaurantsData = try Data(contentsOf: restaurantsResource.url)
-            let parsedData = try restaurantsResource.parseFunction(restaurantsData)
-            completion(parsedData, nil)
-        } catch {
-            completion(nil, error)
+        localService.load(resource: Restaurant.allFromStub) { restaurants, error in
+            completion(restaurants, error)
         }
     }
     

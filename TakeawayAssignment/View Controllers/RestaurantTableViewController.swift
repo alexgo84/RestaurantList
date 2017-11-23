@@ -50,7 +50,7 @@ class RestaurantTableViewController: UITableViewController {
     // MARK: public methods
     
     private var currentSearchTerm: String = ""
-    var currentSortType: SortType = .bestMatch
+    private var currentSortType: SortType = .bestMatch
 
     public func updateContent(sortType: SortType? = nil, searchTerm: String? = nil) {
         if let sortType = sortType {

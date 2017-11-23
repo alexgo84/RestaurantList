@@ -28,7 +28,7 @@ enum JSONURL {
         case .restaurants:
             // When we want to fetch from remote - return here the URL for the REST API that returns
             // the restaurants JSON data
-            fatalError("Not implemented")
+            assert(false, "Not implemented!")
         }
     }
 }

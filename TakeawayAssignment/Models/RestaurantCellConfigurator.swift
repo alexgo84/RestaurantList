@@ -1,5 +1,5 @@
 //
-//  CellConfigurator.swift
+//  RestaurantCellConfigurator.swift
 //  TakeawayAssignment
 //
 //  Created by Alex Gordon on 19.11.17.
@@ -49,12 +49,12 @@ private extension RestaurantCellConfigurator {
         case .bestMatch:
             if let bestMatchValue = restaurant.sortValues?.bestMatch {
                 cell.sortValueLabel.isHidden = false
-                cell.sortValueLabel.text = "Best match: \(bestMatchValue)"
+                cell.sortValueLabel.text = "Best Match: \(bestMatchValue)"
             }
         case .deliveryCosts:
             if let deliveryCostsValue = restaurant.sortValues?.deliveryCosts {
                 cell.sortValueLabel.isHidden = false
-                cell.sortValueLabel.text = "Delivery costs: \(deliveryCostsValue)"
+                cell.sortValueLabel.text = "Delivery Costs: \(deliveryCostsValue)"
             }
         case .distance:
             if let distanceValue = restaurant.sortValues?.distance {
@@ -64,7 +64,7 @@ private extension RestaurantCellConfigurator {
         case .minCost:
             if let minCostValue = restaurant.sortValues?.minCost {
                 cell.sortValueLabel.isHidden = false
-                cell.sortValueLabel.text = "Min cost: \(minCostValue)"
+                cell.sortValueLabel.text = "Min Cost: \(minCostValue)"
             }
         case .newest:
             if let newestValue = restaurant.sortValues?.newest {
@@ -84,7 +84,7 @@ private extension RestaurantCellConfigurator {
         case .ratingAverage:
             if let ratingAverageValue = restaurant.sortValues?.ratingAverage {
                 cell.sortValueLabel.isHidden = false
-                cell.sortValueLabel.text = "Rating average: \(ratingAverageValue)"
+                cell.sortValueLabel.text = "Average Rating: \(ratingAverageValue)"
             }
         }
     }

@@ -8,37 +8,6 @@
 
 import Foundation
 
-public enum RestaurantStatus: Int {
-    case open
-    case orderAhead
-    case closed
-    case unknown
-    
-    init(string: String) {
-        switch string.lowercased() {
-        case "open"        : self = RestaurantStatus.open
-        case "order ahead" : self = RestaurantStatus.orderAhead
-        case "closed"      : self = RestaurantStatus.closed
-        default            : self = RestaurantStatus.unknown
-        }
-    }
-    
-    public func toString() -> String {
-        switch self {
-        case .open      : return "Open"
-        case .orderAhead: return "Order ahead"
-        case .closed    : return "Closed"
-        case .unknown   : return "Unknown"
-        }
-    }
-}
-
-extension RestaurantStatus: Equatable {
-    static func <(lhs: RestaurantStatus, rhs: RestaurantStatus) -> Bool {
-        return lhs.rawValue < rhs.rawValue
-    }
-}
-
 struct Restaurant: Identifiable, Sortable {
     var sortValues: SortValues?
     let name: String

@@ -19,7 +19,7 @@ struct RestaurantSorter {
     public func sort(elements: [Restaurant]) -> [Restaurant] {
         return elements.sorted { (restaurant1, restaurant2) -> Bool in
             guard restaurant1.status == restaurant2.status else  {
-                return restaurant1.status < restaurant2.status
+                return restaurant1.status > restaurant2.status
             }
             guard let sortValues1 = restaurant1.sortValues else {
                 return true
@@ -27,7 +27,7 @@ struct RestaurantSorter {
             guard let sortValues2 = restaurant2.sortValues else {
                 return false
             }
-            return sortValues1.valueFor(sortType: sortType) < sortValues2.valueFor(sortType: sortType)
+            return sortValues1.compare(sortValues: sortValues2, sortType: sortType)
         }
     }
 
