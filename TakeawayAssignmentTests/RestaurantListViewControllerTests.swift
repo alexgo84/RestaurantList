@@ -26,15 +26,15 @@ class RestaurantListViewControllerTests: XCTestCase {
         // Set outlets that are strongly referenced elsewhere
         sut.searchBar = searchBar
         sut.sortTypeScrollView = scrollView
+
+        // Segue to dummy table view controller and load (as if in real runtime)
+        let segue = UIStoryboardSegue(identifier: "RestaurantTableViewControllerSegue", source: UIViewController(), destination: restaurantTableViewController)
+        sut.prepare(for: segue, sender: nil)
         sut.viewDidLoad()
         
         // Assign a dummy APIClient
         let dummyApiClient = DummyAPIClient(allFavorite: false, mixUp: true)
         sut.apiClient = dummyApiClient
-        
-        // Segue to dummy table view controller
-        let segue = UIStoryboardSegue(identifier: "RestaurantTableViewControllerSegue", source: UIViewController(), destination: restaurantTableViewController)
-        sut.prepare(for: segue, sender: nil)
     }
     
     func test_InitialConfiguration() {
