@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias JSONDict = [String: AnyObject]
+public typealias JSONDict = [String: AnyObject]
 
 enum JSONURL {
     case restaurants

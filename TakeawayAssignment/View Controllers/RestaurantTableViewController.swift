@@ -16,8 +16,8 @@ class RestaurantTableViewController: UITableViewController {
     var restaurants = [Restaurant]()
 
     
-    // MARK: - UITableViewController
-    
+    // MARK: - <UIViewController>
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,26 +25,6 @@ class RestaurantTableViewController: UITableViewController {
                                 forCellReuseIdentifier: Restaurant.cellIdentifier())
         self.tableView.dataSource = dataSource
         tableView.delegate = self
-    }
-    
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let restaurant = dataSource.sections[indexPath.section].cellData[indexPath.row]
-        let alreadyFavorite = apiClient.isFavorite(name: restaurant.name)
-        
-        if alreadyFavorite {
-            return [removeFromFavoritesAction(restaurant: restaurant)]
-        } else {
-            return [addToFavoritesAction(restaurant: restaurant)]
-        }
-    }
-
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        guard let header = view as? UITableViewHeaderFooterView else { return }
-        header.textLabel?.textColor = UIColor.white
-        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        header.textLabel?.frame = header.frame
-        header.textLabel?.textAlignment = .center
-        header.tintColor = UIColor(red: 20.0 / 255, green: 116.0 / 255, blue: 155.0 / 255, alpha: 1)
     }
     
     // MARK: public methods
@@ -74,6 +54,33 @@ class RestaurantTableViewController: UITableViewController {
         }
     }
 }
+
+// MARK: - <UITableViewController>
+
+extension RestaurantTableViewController {
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.textLabel?.textColor = UIColor.white
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        header.textLabel?.frame = header.frame
+        header.textLabel?.textAlignment = .center
+        header.tintColor = UIColor(red: 20.0 / 255, green: 116.0 / 255, blue: 155.0 / 255, alpha: 1)
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let restaurant = dataSource.sections[indexPath.section].cellData[indexPath.row]
+        let alreadyFavorite = apiClient.isFavorite(name: restaurant.name)
+        
+        if alreadyFavorite {
+            return [removeFromFavoritesAction(restaurant: restaurant)]
+        } else {
+            return [addToFavoritesAction(restaurant: restaurant)]
+        }
+    }
+}
+
+// MARK: - actions for favorite toggle
 
 private extension RestaurantTableViewController {
     func addToFavoritesAction(restaurant: Restaurant) -> UITableViewRowAction {

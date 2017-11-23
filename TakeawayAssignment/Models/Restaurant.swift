@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct Restaurant: Identifiable, Sortable {
+public struct Restaurant: Identifiable, Sortable {
     var sortValues: SortValues?
     let name: String
     let status: RestaurantStatus
     
-    static func cellIdentifier() -> String {
+    public static func cellIdentifier() -> String {
         return "RestaurantCell"
     }
 }
@@ -43,7 +43,7 @@ extension Restaurant {
 extension Restaurant {
     private static func defaultParseMethod(data: Data) throws -> [Restaurant]? {
         do {
-            if let json = try JSONSerialization.jsonObject(with: data) as? [String:Any] {
+            if let json = try JSONSerialization.jsonObject(with: data) as? JSONDict {
                 let restaurantsJSON = json["restaurants"] as? [JSONDict]
                 return restaurantsJSON?.flatMap(Restaurant.init)
             }

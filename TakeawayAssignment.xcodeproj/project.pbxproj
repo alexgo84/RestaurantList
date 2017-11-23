@@ -10,8 +10,8 @@
 		7516518A1FC63DF7008E2339 /* RestaurantListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751651891FC63DF7008E2339 /* RestaurantListViewControllerTests.swift */; };
 		7516518C1FC63EDA008E2339 /* RestaurantTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7516518B1FC63EDA008E2339 /* RestaurantTableViewControllerTests.swift */; };
 		7516518E1FC643CC008E2339 /* DummyRestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7516518D1FC643CC008E2339 /* DummyRestaurantTableViewController.swift */; };
+		751651901FC6508C008E2339 /* StubFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7516518F1FC6508C008E2339 /* StubFactory.swift */; };
 		7518DD1A1FC61856003C2F8F /* RestaurantSectionsFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518DD191FC61856003C2F8F /* RestaurantSectionsFactoryTests.swift */; };
-		7518DD1C1FC61870003C2F8F /* StubFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518DD1B1FC61870003C2F8F /* StubFactory.swift */; };
 		7518DD1E1FC619EE003C2F8F /* DummyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518DD1D1FC619EE003C2F8F /* DummyAPIClient.swift */; };
 		751ADD211FC5CFC9002CEC13 /* RestaurantSectionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ADD201FC5CFC9002CEC13 /* RestaurantSectionsFactory.swift */; };
 		751ADD231FC5EC4D002CEC13 /* SortTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ADD221FC5EC4D002CEC13 /* SortTypeButton.swift */; };
@@ -64,8 +64,8 @@
 		751651891FC63DF7008E2339 /* RestaurantListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewControllerTests.swift; sourceTree = "<group>"; };
 		7516518B1FC63EDA008E2339 /* RestaurantTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewControllerTests.swift; sourceTree = "<group>"; };
 		7516518D1FC643CC008E2339 /* DummyRestaurantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRestaurantTableViewController.swift; sourceTree = "<group>"; };
+		7516518F1FC6508C008E2339 /* StubFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFactory.swift; sourceTree = "<group>"; };
 		7518DD191FC61856003C2F8F /* RestaurantSectionsFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSectionsFactoryTests.swift; sourceTree = "<group>"; };
-		7518DD1B1FC61870003C2F8F /* StubFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFactory.swift; sourceTree = "<group>"; };
 		7518DD1D1FC619EE003C2F8F /* DummyAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyAPIClient.swift; sourceTree = "<group>"; };
 		751ADD201FC5CFC9002CEC13 /* RestaurantSectionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSectionsFactory.swift; sourceTree = "<group>"; };
 		751ADD221FC5EC4D002CEC13 /* SortTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortTypeButton.swift; sourceTree = "<group>"; };
@@ -129,8 +129,8 @@
 		7518DD1F1FC61A9E003C2F8F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				7518DD1B1FC61870003C2F8F /* StubFactory.swift */,
 				7584D7C51FC639D3008B2034 /* DummyRestaurantCell.swift */,
+				7516518F1FC6508C008E2339 /* StubFactory.swift */,
 				7518DD1D1FC619EE003C2F8F /* DummyAPIClient.swift */,
 				7516518D1FC643CC008E2339 /* DummyRestaurantTableViewController.swift */,
 			);
@@ -384,9 +384,9 @@
 				751ADD271FC5FDE7002CEC13 /* RestaurantStatusTests.swift in Sources */,
 				7516518E1FC643CC008E2339 /* DummyRestaurantTableViewController.swift in Sources */,
 				751ADD311FC60702002CEC13 /* ResourceTests.swift in Sources */,
+				751651901FC6508C008E2339 /* StubFactory.swift in Sources */,
 				751ADD291FC6024B002CEC13 /* SortValuesTests.swift in Sources */,
 				7518DD1A1FC61856003C2F8F /* RestaurantSectionsFactoryTests.swift in Sources */,
-				7518DD1C1FC61870003C2F8F /* StubFactory.swift in Sources */,
 				7584D7C81FC63B19008B2034 /* DataSourceTests.swift in Sources */,
 				759EF37B1FC62D090009252E /* RestaurantSorterTests.swift in Sources */,
 				751ADD331FC60EEF002CEC13 /* APIClientTests.swift in Sources */,

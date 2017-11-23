@@ -29,28 +29,19 @@ class RestaurantListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RestaurantTableViewControllerSegue" {
-            restaurantTableViewController = segue.destination as! RestaurantTableViewController
+            
+            guard let destinationViewController = segue.destination as? RestaurantTableViewController else {
+                fatalError()
+            }
+            
+            restaurantTableViewController = destinationViewController
             restaurantTableViewController.apiClient = apiClient
             fetchRestaurantsAsync()
         }
     }
 }
 
-extension RestaurantListViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        updateResultsInRestaurantTableViewController()
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        searchBar.text = ""
-        self.searchBar(searchBar, textDidChange: "")
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.endEditing(true)
-    }
-}
+// MARK: - Private methods
 
 private extension RestaurantListViewController {
     
@@ -81,6 +72,26 @@ private extension RestaurantListViewController {
         restaurantTableViewController.updateContent(sortType: currentSortType, searchTerm: searchTerm)
     }
 }
+
+// MARK: - <UISearchBarDelegate>
+
+extension RestaurantListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        updateResultsInRestaurantTableViewController()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.text = ""
+        self.searchBar(searchBar, textDidChange: "")
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+}
+
+// MARK: - Sort type related configurations
 
 private extension RestaurantListViewController {
         
