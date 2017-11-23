@@ -16,8 +16,9 @@ enum JSONURL {
     func urlToLocalStub() -> URL {
         switch self {
         case .restaurants:
-            guard let url = Bundle.main.url(forResource: "sample iOS", withExtension: "json") else {
-                fatalError("FAIL: couldn't find restaurant JSON data on main bundle")
+            let localStubName = "sample iOS"
+            guard let url = Bundle.main.url(forResource: localStubName, withExtension: "json") else {
+                fatalError("FAIL: couldn't find '\(localStubName)' JSON data on main bundle")
             }
             return url
         }
@@ -28,7 +29,7 @@ enum JSONURL {
         case .restaurants:
             // When we want to fetch from remote - return here the URL for the REST API that returns
             // the restaurants JSON data
-            assert(false, "Not implemented!")
+            fatalError("Not implemented!")
         }
     }
 }

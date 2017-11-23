@@ -66,7 +66,7 @@ class DataSource<T>: NSObject, UITableViewDataSource where T: Identifiable & Sor
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let genericCell = tableView.dequeueReusableCell(withIdentifier: T.cellIdentifier()) else {
-            fatalError("Unknown Identifier")
+            fatalError("Unknown Identifier on generic type: \(T.cellIdentifier())")
         }
         
         let cellData: T = sections[indexPath.section].cellData[indexPath.row]

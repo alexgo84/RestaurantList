@@ -15,13 +15,19 @@ class RestaurantListViewController: UIViewController {
     var currentSearchTerm = ""
     var currentSortType: SortType = .bestMatch
     
-    weak var restaurantTableViewController: RestaurantTableViewController!
+    weak var restaurantTableViewController: RestaurantTableViewController?
     var searchTypeButtons = [UIButton]()
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var sortTypeScrollView: UIScrollView!
     
     override func viewDidLoad() {
+        if restaurantTableViewController == nil {
+            assertionFailure("Restaurant table view controller should be set before view loads")
+            restaurantTableViewController = childViewControllers.flatMap({
+                $0 as? RestaurantTableViewController }).first // Try to recover. flatMap filters out nils
+        }
+        
         super.viewDidLoad()
         configureSortTypeScrollView()
         searchBar.delegate = self
@@ -31,11 +37,11 @@ class RestaurantListViewController: UIViewController {
         if segue.identifier == "RestaurantTableViewControllerSegue" {
             
             guard let destinationViewController = segue.destination as? RestaurantTableViewController else {
-                fatalError()
+                fatalError("Expected RestaurantTableViewController, instead got: \(segue.destination)")
             }
             
+            destinationViewController.apiClient = apiClient
             restaurantTableViewController = destinationViewController
-            restaurantTableViewController.apiClient = apiClient
             fetchRestaurantsAsync()
         }
     }
@@ -58,18 +64,20 @@ private extension RestaurantListViewController {
             }
             
             if let restaurants = restaurants {
-                self.restaurantTableViewController.restaurants = restaurants
+                self.restaurantTableViewController?.restaurants = restaurants
                 self.updateResultsInRestaurantTableViewController()
             } else {
+                // this is the case where error == restaurants == nil. this should not happen.
+                // assertion stays here as this is a pitfal (hidden expectation)
                 ErrorMessage.unknownError().show(on: self)
-                assert(false)
+                assertionFailure("Received nil restaurants and nil error from API. Both shouldn't be nil - please investigate.")
             }
         }
     }
     
     func updateResultsInRestaurantTableViewController() {
         let searchTerm = searchBar.text
-        restaurantTableViewController.updateContent(sortType: currentSortType, searchTerm: searchTerm)
+        restaurantTableViewController?.updateContent(sortType: currentSortType, searchTerm: searchTerm)
     }
 }
 
@@ -132,7 +140,7 @@ private extension RestaurantListViewController {
             currentSortType = sortType
             updateResultsInRestaurantTableViewController()
         } else {
-            fatalError("Illegal tag on sort by type button")
+            fatalError("Illegal tag on sort by type button: \(sender.tag)")
         }
     }
 }
